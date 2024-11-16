@@ -5,7 +5,8 @@ from HumanMoveTest.runner_and_tournament import Runner, Tournament
 class RunnerTest(unittest.TestCase):
     def test_walk(self):
         """
-        test_walk - метод, в котором создаётся объект класса Runner с произвольным именем.
+        тест метода walk
+        создаётся объект класса Runner с произвольным именем.
         Далее вызовите метод walk у этого объекта 10 раз.
         После чего методом assertEqual сравните distance этого объекта со значением 50.
         """
@@ -16,7 +17,8 @@ class RunnerTest(unittest.TestCase):
 
     def test_run(self):
         """
-        test_run - метод, в котором создаётся объект класса Runner с произвольным именем.
+        тест метода run
+        создаётся объект класса Runner с произвольным именем.
         Далее вызовите метод run у этого объекта 10 раз.
         После чего методом assertEqual сравните distance этого объекта со значением 100.
         """
@@ -27,12 +29,13 @@ class RunnerTest(unittest.TestCase):
 
     def test_challenge(self):
         """
+        совместный тест методов run и walk
         test_challenge - метод в котором создаются 2 объекта класса Runner с произвольными именами.
         Далее 10 раз у объектов вызываются методы run и walk соответственно.
         Т.к. дистанции должны быть разными, используйте метод assertNotEqual, чтобы убедится в неравенстве результатов.
         """
         runner1 = Runner('name1')
-        runner2 = R unner('name1')
+        runner2 = Runner('name1')
         for _ in range(10):
             runner1.walk()
             runner2.run()
@@ -73,16 +76,19 @@ class TournamentTest(unittest.TestCase):
     # методы тестирования забегов, в которых создаётся объект Tournament на дистанцию 90.
     # Ник всегда должен быть последним.
     def test_tournament1(self):
+        """ тест tournament для двух участников """
         results = self.__test_tournament(90, 'Усэйн', 'Ник')
         self.all_results['1'] = results
         self.assertTrue(results[max(results)] == 'Ник')
 
     def test_tournament2(self):
+        """ тест tournament для двух других участников """
         results = self.__test_tournament(90, 'Андрей', 'Ник')
         self.all_results['2'] = results
         self.assertTrue(results[max(results)] == 'Ник')
 
     def test_tournament3(self):
+        """ тест tournament для трех участников """
         results = self.__test_tournament(90, 'Усэйн', 'Андрей', 'Ник')
         self.all_results['3'] = results
         self.assertTrue(results[max(results)] == 'Ник')
@@ -93,6 +99,7 @@ class TournamentTest(unittest.TestCase):
     чем бегун с большей. Попробуйте решить эту проблему и обложить дополнительными тестами.
     """
     def test_tournament4(self):
+        """ тест исправления ошибки в tournament.start """
         results = self.__test_tournament(5, 'Усэйн', 'Андрей', 'Ник')
         self.all_results['4'] = results
         self.assertTrue(results[len(results)] == 'Ник')
