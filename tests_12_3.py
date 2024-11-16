@@ -3,6 +3,9 @@ from HumanMoveTest.runner_and_tournament import Runner, Tournament
 
 
 class RunnerTest(unittest.TestCase):
+    is_frozen = False
+
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk(self):
         """
         тест метода walk
@@ -15,6 +18,7 @@ class RunnerTest(unittest.TestCase):
             runner.walk()
         self.assertEqual(runner.distance, 50)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
         """
         тест метода run
@@ -27,6 +31,7 @@ class RunnerTest(unittest.TestCase):
             runner.run()
         self.assertEqual(runner.distance, 100)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_challenge(self):
         """
         совместный тест методов run и walk
@@ -43,6 +48,7 @@ class RunnerTest(unittest.TestCase):
 
 
 class TournamentTest(unittest.TestCase):
+    is_frozen = True
 
     @classmethod
     def setUpClass(cls):
@@ -52,6 +58,7 @@ class TournamentTest(unittest.TestCase):
         """
         cls.all_results = {}
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def setUp(self):
         """ создаются 3 объекта Runner """
         self.runners = [
@@ -75,18 +82,21 @@ class TournamentTest(unittest.TestCase):
 
     # методы тестирования забегов, в которых создаётся объект Tournament на дистанцию 90.
     # Ник всегда должен быть последним.
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_tournament1(self):
         """ тест tournament для двух участников """
         results = self.__test_tournament(90, 'Усэйн', 'Ник')
         self.all_results['1'] = results
         self.assertTrue(results[max(results)] == 'Ник')
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_tournament2(self):
         """ тест tournament для двух других участников """
         results = self.__test_tournament(90, 'Андрей', 'Ник')
         self.all_results['2'] = results
         self.assertTrue(results[max(results)] == 'Ник')
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_tournament3(self):
         """ тест tournament для трех участников """
         results = self.__test_tournament(90, 'Усэйн', 'Андрей', 'Ник')
@@ -98,6 +108,7 @@ class TournamentTest(unittest.TestCase):
     В результате его работы бегун с меньшей скоростью может пробежать некоторые дистанции быстрее, 
     чем бегун с большей. Попробуйте решить эту проблему и обложить дополнительными тестами.
     """
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_tournament4(self):
         """ тест исправления ошибки в tournament.start """
         results = self.__test_tournament(5, 'Усэйн', 'Андрей', 'Ник')
